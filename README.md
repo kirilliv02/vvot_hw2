@@ -3,4 +3,6 @@
 2. `cd vvot_hw2`
 3. `.\cloudphoto.exe --help` для Windows *ИЛИ* `cloudphoto --help` для Linux
 
-PS Файлы уже собраны нужно только запустить, собирал командой `CGO_ENABLED=0 go build -o cloudphoto cmd/main.go`
+Файлы уже собраны нужно только запустить!!!
+
+PS Cобирал командой `CGO_ENABLED=0 go build -o cloudphoto cmd/main.go`
