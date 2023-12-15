@@ -1,0 +1,12 @@
+<!doctype html>
+<html>
+<head>
+    <title>Фотоархив</title>
+</head>
+<body>
+<h1>Фотоархив</h1>
+<ul>
+    {{ range . }}<li><a href="{{.File}}">{{.Name}}</a></li>
+    {{ end }}
+</ul>
+</body>
