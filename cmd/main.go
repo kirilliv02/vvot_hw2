@@ -141,7 +141,10 @@ func main() {
 				Aliases: []string{"mk"},
 				Usage:   "Формирование и публикация веб-страниц фотоархива",
 				Action: func(cCtx *cli.Context) error {
-					client, _ := initClient(configPath)
+					client, err := initClient(configPath)
+					if err != nil {
+						return err
+					}
 					return makeSite(client)
 				},
 			},
