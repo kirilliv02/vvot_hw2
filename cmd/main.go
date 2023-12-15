@@ -112,7 +112,13 @@ func main() {
 
 					return list(client, album)
 				},
-				Flags: []cli.Flag{albumFlag},
+				Flags: []cli.Flag{&cli.StringFlag{
+					Aliases:     []string{"a"},
+					Value:       "",
+					Name:        "album",
+					Usage:       "Название альбома",
+					Destination: &album,
+				}},
 			},
 			{
 				Name:    "delete",
