@@ -29,6 +29,7 @@ func main() {
 	var (
 		path  string
 		album string
+		photo string
 	)
 	homeDir, err := os.UserHomeDir()
 	if err != nil {
@@ -130,15 +131,15 @@ func main() {
 						return err
 					}
 
-					return deleteImageOrAlbum(client, album, path)
+					return deleteImageOrAlbum(client, album, photo)
 				},
 				Flags: []cli.Flag{albumFlag,
 					&cli.StringFlag{
 						Aliases:     []string{"p"},
-						Name:        "path",
+						Name:        "photo",
 						Value:       "",
 						Usage:       "Название каталога",
-						Destination: &path,
+						Destination: &photo,
 					},
 				},
 			},
@@ -217,8 +218,8 @@ func initCloudPhoto(configPath string) error {
 	return nil
 }
 
-func deleteImageOrAlbum(client *Client, album string, path string) error {
-	if path == "" {
+func deleteImageOrAlbum(client *Client, album string, photo string) error {
+	if photo == "" {
 		v2, err := client.ListObjectsV2(context.Background(), &s3.ListObjectsV2Input{
 			Bucket: aws.String(client.bucket),
 			Prefix: aws.String(album + "/"),
@@ -241,7 +242,7 @@ func deleteImageOrAlbum(client *Client, album string, path string) error {
 			}
 		}
 	} else {
-		file := filepath.ToSlash(filepath.Join(album, path))
+		file := filepath.ToSlash(filepath.Join(album, photo))
 		_, err := client.DeleteObject(context.Background(), &s3.DeleteObjectInput{
 			Bucket: aws.String(client.bucket),
 			Key:    aws.String(file),

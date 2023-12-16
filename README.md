@@ -1,7 +1,7 @@
 ### Запуск проекта
 1. `git clone https://github.com/kirilliv02/vvot_hw2.git`
 2. `cd vvot_hw2`
-3. `.\cloudphoto.exe --help` для Windows *ИЛИ* `cloudphoto --help` для Linux
+3. `.\cloudphoto.exe --help` для Windows *ИЛИ* `./cloudphoto --help` для Linux
 
 Файлы уже собраны нужно только запустить!!!
 
